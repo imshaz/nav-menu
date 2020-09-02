@@ -1,0 +1,233 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+:root {
+  /************ Custom Properties ***********/
+
+  /* Main Color */
+  --primary-color: #014d4e;
+
+  /* Secondary Color */
+  --secondary-color: #ff9408;
+
+  /* Secondary Color Modified */
+  --secondary-color-m: #ff94088e;
+
+  /* tertiary color */
+  --tertiary-color: #017374;
+
+  /* tertiary color modified */
+  --tertiary-color-m: #01727498;
+}
+body {
+  font-family: "Tamma 2", cursive;
+}
+header#header {
+  padding: 20px;
+  background-color: red;
+  align-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 10px;
+  /* margin: 10px; */
+}
+header a {
+  color: white;
+}
+ul.menu {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  transition: translate 0.5 ease-in;
+}
+
+.menu .menu-item {
+  margin-right: 20px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.menu .menu-item::before,
+.menu .menu-item:visited::before,
+.menu .menu-item::after,
+.menu .menu-item:visited::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.6s ease-in-out;
+}
+.menu .menu-item::after,
+.menu .menu-item:visited::after {
+  top: -10px;
+}
+.menu .menu-item::before,
+.menu .menu-item:visited::before {
+  bottom: -10px;
+}
+.menu .menu-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.menu .menu-item:hover::before {
+  transform: scale(1);
+  transform-origin: right;
+}
+
+.menu-item a {
+  color: inherit;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.hamburger {
+  display: none;
+}
+/* her section start here */
+
+section.hero {
+  background-image: url(../assets/img/full-bg-07.jpg);
+  height: 90vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: right;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.hero .hero-wrapper {
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+  min-width: 350px;
+  color: #fff;
+  padding: 20px 30px;
+  min-height: 300px;
+  animation: hero-wrap 2s;
+}
+
+@keyframes hero-wrap {
+  0% {
+    transform: translateX(100vw) rotate(360deg);
+    /* transform: rotate(360); */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.hero .hero-wrapper .hero-title {
+  font-size: 36px;
+}
+.hero .hero-wrapper .content {
+  font-size: 24px;
+  font-family: "Indie Flower", cursive;
+}
+
+.hero .hero-wrapper .work:link,
+.hero .hero-wrapper .work:visited {
+  font-size: 24px;
+  color: #fff;
+  position: relative;
+  margin-bottom: 10px;
+  width: fit-content;
+  display: inline-block;
+  letter-spacing: 2px;
+  z-index: 1;
+  padding: 10px;
+}
+.hero .hero-wrapper .work:link::after,
+.hero .hero-wrapper .work:visited::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
+  transform: scaleX(0);
+  background-color: var(--primary-color);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.hero .hero-wrapper .work.hover::after,
+.hero .hero-wrapper .work:hover:after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+@media (max-width: 850px) {
+  .menu .menu-item {
+    /* display: none; */
+    font-size: 1rem;
+  }
+  .menu .menu-item:last-child {
+    display: none;
+    /* font-size: 1rem; */
+  }
+}
+@media (max-width: 678px) {
+  .hamburger {
+    display: block;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  ul.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    right: -50%;
+    top: 60px;
+    height: 100%;
+    background: red;
+    width: 43%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+  }
+  ul.menu .menu-item {
+    font-size: 1rem;
+    margin: 30px 0;
+    top: 0;
+  }
+  .menu.show {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* hero */
+  section.hero {
+    /* display: none; */
+    align-items: flex-end;
+  }
+}
